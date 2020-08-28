@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="de">
+
+<head>
+	<meta charset="utf-8">
+	<title>Repetierer</title>
+	<meta name="description" content="Student tortue assistant (:">
+	<meta name="author" content="srpnt3">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="container">
+
+	<div id="title-bar">
+		<div class="ico" id="minimize">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 6">
+				<rect width="56" height="6" rx="3"/>
+			</svg>
+		</div>
+		<!--<div class="menu-button" id="maximize"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62 62"><path d="M53,62H9a9,9,0,0,1-9-9V9A9,9,0,0,1,9,0H53a9,9,0,0,1,9,9V53A9,9,0,0,1,53,62ZM9,56H53a3,3,0,0,0,3-3V9a3,3,0,0,0-3-3H9A3,3,0,0,0,6,9V53A3,3,0,0,0,9,56Z"/></svg></div>-->
+		<div class="ico" id="quit">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58.72 57.8">
+				<path d="M57.86.9h0a3,3,0,0,0-4.24,0L29.36,24.69,5.1.86A3,3,0,0,0,.86.9h0a3,3,0,0,0,0,4.24L25.08,28.9.9,52.66a3,3,0,0,0,0,4.24h0a3,3,0,0,0,4.24,0L29.36,33.1,53.62,56.94a3,3,0,0,0,4.24,0h0a3,3,0,0,0,0-4.24L33.64,28.9,57.82,5.14A3,3,0,0,0,57.86.9Z"/>
+			</svg>
+		</div>
+	</div>
+
+	<h1 id="title">Repetierer</h1>
+
+	<div id="content">
+		<div class="neum" id="file">
+			<h2>Datei</h2>
+			<button class="btn-1">Datei Auswählen</button>
+		</div>
+		<div class="neum" id="class">
+			<h2>Klasse</h2>
+			<div id="class-list">
+				<div>
+					<button class="btn-2">Klasse 1e</button>
+					<button class="btn-2">Klasse 2e</button>
+					<button class="btn-2">Klasse 3c</button>
+					<button class="btn-2">Klasse 4c</button>
+					<button class="btn-2">Klasse 5c</button>
+					<button class="btn-2">Klasse 6c</button>
+				</div>
+			</div>
+		</div>
+		<div class="neum" id="repetition">
+			<h2>Repetition</h2>
+			<button class="btn-1">Start</button>
+			<h1 id="name">Name</h1>
+			<div id="idk">
+				<div id="mark">
+					<label>Note: </label>
+					<input name="mark" type="text">
+				</div>
+				<button class="btn-2">Abbrechen</button>
+				<button class="btn-1">OK</button>
+			</div>
+		</div>
+	</div>
+
+</div>
+</body>
+
+<script>
+	require('./menu.js');
+
+	// scale name
+	let x = document.getElementById("name");
+	let z = 30; // this value can be changed
+	let n = 10 - z/4;
+	let s = z/x.innerText.split(" ")[0].length + n;
+	x.style.fontSize = s + "rem";
+	x.style.marginTop = (10 - s) + "rem";
+</script>
+
+</html>

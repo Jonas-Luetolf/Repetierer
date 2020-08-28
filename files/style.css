@@ -1,0 +1,217 @@
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
+@media all {
+
+	/*==================================
+	Reset
+	==================================*/
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: "Roboto";
+		color: whitesmoke;
+		-webkit-font-smoothing: antialiased;
+		user-select: none;
+	}
+
+	artice, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+		display: block;
+	}
+
+	html, body {
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		background-color: transparent;
+		font-size: 1em;
+	}
+
+	#container {
+		-webkit-app-region: drag;
+		display: flex;
+		flex-direction: column;
+		justify-content: stretch;
+		height: 100%;
+		width: 100%;
+		background-color: #27282c;
+		border-radius: 2rem;
+		overflow: hidden;
+	}
+
+	/*==================================
+	Title bar
+	==================================*/
+	#title-bar {
+		height: 2.5rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		padding: 1rem;
+	}
+
+	.ico {
+		-webkit-app-region: no-drag;
+		height: 100%;
+		width: 3rem;
+		position: relative;
+	}
+
+	.ico > svg {
+		height: 1rem;
+		width: 1rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		fill: lightgray;
+	}
+
+	.ico:hover > svg {
+		fill: #18a890;
+	}
+
+	#quit:hover > svg {
+		fill: #cc3333;
+	}
+
+	/*==================================
+	Main
+	==================================*/
+	#title {
+		-webkit-app-region: no-drag;
+		font-size: 4.5rem;
+		padding: 0 3rem;
+		line-height: 100%;
+	}
+
+	#content {
+		-webkit-app-region: no-drag;
+		padding: 3rem;
+		height: calc(100% - 15rem);
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+		grid-column-gap: 2.5rem;
+		grid-row-gap: 2.5rem;
+	}
+
+	#file {
+		grid-area: 1 / 1 / 2 / 2;
+	}
+
+	#class {
+		grid-area: 2 / 1 / 4 / 2;
+	}
+
+	#repetition {
+		grid-area: 1 / 2 / 4 / 4;
+		position: relative;
+	}
+
+	.neum {
+		padding: 2rem;
+		border-radius: 1rem;
+		box-shadow: -0.4rem -0.4rem 0.7rem 0 rgba(65, 66, 70, 0.3), 0.4rem 0.4rem 0.7rem 0 rgba(0, 0, 0, 0.3);
+	}
+
+	h2 {
+		font-size: 2.25rem;
+		margin-bottom: 1.75rem;
+		line-height: 100%;
+	}
+
+	.btn-1, .btn-2 {
+		-webkit-appearance: none;
+		font-size: 1rem;
+		line-height: 100%;
+		padding: 1.25rem 2rem;
+		border-radius: 3.5rem;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.btn-1 {
+		background-color: #27282c;
+		border: 0.1rem solid #18a890;
+	}
+
+	.btn-2 {
+		border: none;
+		background-color: #414246;
+	}
+
+	.btn-1:hover, .btn-2:hover {
+		background-color: #18a890;
+	}
+
+	#class-list {
+		overflow: scroll;
+		height: calc(100% - 4rem);
+	}
+
+	#class-list::-webkit-scrollbar {
+		width: 0.4rem;
+		height: 0;
+	}
+
+	#class-list::-webkit-scrollbar-thumb {
+		background-color: #414246;
+		border-radius: 0.2rem;
+	}
+
+	#class-list button {
+		margin-bottom: 1rem;
+	}
+
+	#class-list button:last-child {
+		margin: 0;
+	}
+
+	#class-list button:hover {
+		background-color: #18a890;
+	}
+
+	#name {
+		width: auto;
+		/*max-font-size: 10rem;*/
+		text-transform: uppercase;
+		color: #414246;
+	}
+
+	#idk {
+		position: absolute;
+		width: calc(100% - 4rem);
+		left: 2rem;
+		bottom: 2rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	#idk button {
+		margin-left: 1rem;
+	}
+
+	#mark {
+		position: absolute;
+		left: 0;
+		bottom: 0.75rem;
+		font-size: 1rem;
+	}
+
+	#mark input {
+		margin-left: 1rem;
+		background-color: transparent;
+		border: none;
+		border-bottom: 0.1rem solid #18a890;
+		outline: none;
+		font-size: 1rem;
+		padding: 0.5rem;
+		width: 2rem;
+		text-align: center;
+	}
+
+	/*==================================
+	End
+	==================================*/
+}
