@@ -1,4 +1,6 @@
 const {BrowserWindow, app} = require('electron');
+require('./src/mainProcess.js');
+
 let win;
 
 // initialize the window
@@ -18,7 +20,7 @@ function initWindow() {
 
 // load the index.html file and display it
 function loadHTML() {
-	win.loadFile("files/index.html")
+	win.loadFile('public/index.html')
 }
 
 // close the window
@@ -30,7 +32,7 @@ function closeWindow() {
 app.on('ready', function() {
 	initWindow();
 	loadHTML();
-	win.on("close", event => {
+	win.on('close', () => {
 		closeWindow();
 	})
 });

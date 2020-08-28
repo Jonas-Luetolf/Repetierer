@@ -144,6 +144,13 @@
 		background-color: #18a890;
 	}
 
+	.disabled {
+		cursor: not-allowed;
+		pointer-events: none;
+		color: #777880;
+		border-color: #414246 !important;
+	}
+
 	#class-list {
 		overflow: scroll;
 		height: calc(100% - 4rem);
@@ -178,7 +185,7 @@
 		color: #414246;
 	}
 
-	#idk {
+	#res {
 		position: absolute;
 		width: calc(100% - 4rem);
 		left: 2rem;
@@ -188,18 +195,18 @@
 		justify-content: flex-end;
 	}
 
-	#idk button {
+	#res button {
 		margin-left: 1rem;
 	}
 
-	#mark {
+	#grade {
 		position: absolute;
 		left: 0;
 		bottom: 0.75rem;
 		font-size: 1rem;
 	}
 
-	#mark input {
+	#grade input {
 		margin-left: 1rem;
 		background-color: transparent;
 		border: none;
