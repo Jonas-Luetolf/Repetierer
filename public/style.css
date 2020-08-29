@@ -1,4 +1,7 @@
-@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+@font-face {
+	font-family: "Roboto";
+	src: url("./fonts/Roboto.ttf") format("ttf");
+}
 
 @media all {
 
@@ -8,8 +11,8 @@
 	* {
 		margin: 0;
 		padding: 0;
-		font-family: "Roboto";
-		color: whitesmoke;
+		font-family: "Roboto", sans-serif;
+		color: #f5f5f5;
 		-webkit-font-smoothing: antialiased;
 		user-select: none;
 	}
