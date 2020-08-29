@@ -96,6 +96,19 @@
 		grid-row-gap: 2.5rem;
 	}
 
+	#info {
+		width: auto;
+		position: absolute;
+		top: 6rem;
+		right: 5rem;
+	}
+
+	#info p {
+		color: #414246;
+		text-align: right;
+		padding: 0.1rem;
+	}
+
 	#file {
 		grid-area: 1 / 1 / 2 / 2;
 	}

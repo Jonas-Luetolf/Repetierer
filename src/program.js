@@ -26,7 +26,7 @@ function selectPerson() {
 			list.push(e);
 		}
 	})
-	console.log(list);
+
 	let x = Math.floor(Math.random() * (list.length));
 	person = list[x];
 	return person.name;

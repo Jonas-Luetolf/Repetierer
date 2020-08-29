@@ -1,4 +1,5 @@
-const ipcRenderer = require('electron').ipcRenderer;
+//const ipcRenderer = require('electron').ipcRenderer;
+const { ipcRenderer, remote } = require('electron');
 let state = 0; // 0: select file, 1: select class, 2: click start, 3: set grade
 
 // elements
@@ -143,14 +144,18 @@ function updateState() {
 	}
 }
 
+// display the version
+function version() {
+	document.getElementById("version").innerText = "Repetierer v" + remote.app.getVersion();
+}
+
 // scale the name to fit the screen
 function scaleName() {
 	Math.clamp = function(a, b, c) { return Math.max(b, Math.min(c, a)); }
-	let x = document.getElementById('name');
-	let l = Math.sqrt(x.innerText.length - 3) / 1.5;
-	x.style.fontSize = 10 / Math.max(l, 1) + 'rem';
+	let l = Math.sqrt(_name.innerText.length - 3) / 1.5;
+	_name.style.fontSize = 10 / Math.max(l, 1) + 'rem';
 
 }
 
 // automatically scale the name on load
-module.exports = [scaleName(), updateState()];
+module.exports = [scaleName(), updateState(), version()];

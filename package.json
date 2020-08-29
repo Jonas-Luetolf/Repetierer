@@ -1,12 +1,12 @@
 {
   "name": "repetierer",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "(:",
   "main": "app.js",
   "scripts": {
     "start": "electron . ",
     "build": "electron-builder",
-    "release": "electron-builder -p=onTagOrDraft"
+    "release": "electron-builder -p=always"
   },
   "build": {
     "appId": "net.srpnt3.repetierer",
