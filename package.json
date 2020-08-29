@@ -5,7 +5,24 @@
   "main": "app.js",
   "scripts": {
     "start": "electron . ",
-    "build-win": "electron-packager ./ Repetierer --platform=win32 --arch=x64 --out=./builds --icon=./public/icons/icon.ico"
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "net.srpnt3.repetierer",
+    "productName": "Repetierer",
+    "directories": {
+      "output": "./builds"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "./public/icons/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "./public/icons/icon.ico",
+      "uninstallerIcon": "./public/icons/icon.ico",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "author": "srpnt3",
   "dependencies": {
@@ -14,6 +31,7 @@
   },
   "devDependencies": {
     "electron": "^7.3.3",
+    "electron-builder": "^22.8.0",
     "electron-packager": "^15.1.0"
   }
 }
