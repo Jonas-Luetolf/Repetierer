@@ -64,6 +64,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		fill: lightgray;
+		transition: .5s;
 	}
 
 	.ico:hover > svg {
@@ -128,6 +129,7 @@
 		border-radius: 3.5rem;
 		outline: none;
 		cursor: pointer;
+		transition: .5s;
 	}
 
 	.btn-1 {
@@ -179,9 +181,14 @@
 	}
 
 	#name {
-		width: auto;
-		/*max-font-size: 10rem;*/
+		line-height: 0.75;
 		text-transform: uppercase;
+		vertical-align: top;
+		margin-top: 2rem;
+		color: #18a890;
+	}
+
+	#name.disabled {
 		color: #414246;
 	}
 
@@ -216,6 +223,11 @@
 		padding: 0.5rem;
 		width: 2rem;
 		text-align: center;
+		transition: .5s;
+	}
+
+	label {
+		transition: .5s;
 	}
 
 	/*==================================

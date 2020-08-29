@@ -22,11 +22,11 @@ function selectPerson() {
 	let list = []
 
 	persons.forEach(e => {
-		for (let i = 0; i < 6 - e.grades; i++) {
+		for (let i = 0; i < Math.pow(6 - e.grades, 4) / 20; i++) {
 			list.push(e);
 		}
 	})
-
+	console.log(list);
 	let x = Math.floor(Math.random() * (list.length));
 	person = list[x];
 	return person.name;

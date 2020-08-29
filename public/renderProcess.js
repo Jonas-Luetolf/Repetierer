@@ -102,6 +102,7 @@ function updateState() {
 		case 0:
 		case 1:
 			disable(_start);
+			disable(_name);
 			disable(_label);
 			disable(_grade);
 			disable(_cancel);
@@ -110,6 +111,7 @@ function updateState() {
 			break;
 		case 2:
 			enable(_start);
+			disable(_name);
 			disable(_label);
 			disable(_grade);
 			disable(_cancel);
@@ -118,6 +120,7 @@ function updateState() {
 			break;
 		case 3:
 			enable(_start);
+			enable(_name);
 			enable(_label);
 			enable(_grade);
 			enable(_cancel);
@@ -142,12 +145,11 @@ function updateState() {
 
 // scale the name to fit the screen
 function scaleName() {
+	Math.clamp = function(a, b, c) { return Math.max(b, Math.min(c, a)); }
 	let x = document.getElementById('name');
-	let z = 30; // this value can be changed
-	let n = 10 - z/4;
-	let s = z/x.innerText.split(' ')[0].length + n;
-	x.style.fontSize = s + 'rem';
-	x.style.marginTop = (10 - s) + 'rem';
+	let l = Math.sqrt(x.innerText.length - 3) / 1.5;
+	x.style.fontSize = 10 / Math.max(l, 1) + 'rem';
+
 }
 
 // automatically scale the name on load
