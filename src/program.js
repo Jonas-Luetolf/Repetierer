@@ -19,15 +19,25 @@ function setClass(clss, callback) {
 
 // select a random person (based on the amount of grades)
 function selectPerson() {
-	let x = Math.floor(Math.random() * (persons.length));
-	person = persons[x];
+	let list = []
+
+	persons.forEach(e => {
+		for (let i = 0; i < 6 - e.grades; i++) {
+			list.push(e);
+		}
+	})
+
+	let x = Math.floor(Math.random() * (list.length));
+	person = list[x];
 	return person.name;
 }
 
 // save the new grade to the file
 function saveGrade(grade, callback) {
-	write(cls, person, grade);
-	callback();
+	write(cls, person, grade, (p) => {
+		persons = p;
+		callback()
+	});
 }
 
 module.exports = {
