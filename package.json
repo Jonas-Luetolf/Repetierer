@@ -1,11 +1,12 @@
 {
   "name": "repetierer",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "(:",
   "main": "app.js",
   "scripts": {
     "start": "electron . ",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "release": "electron-builder -p=onTagOrDraft"
   },
   "build": {
     "appId": "net.srpnt3.repetierer",
@@ -15,7 +16,8 @@
     },
     "win": {
       "target": ["nsis"],
-      "icon": "./public/icons/icon.ico"
+      "icon": "./public/icons/icon.ico",
+      "publish": ["github"]
     },
     "nsis": {
       "installerIcon": "./public/icons/icon.ico",
@@ -26,6 +28,7 @@
   },
   "author": "srpnt3",
   "dependencies": {
+    "electron-updater": "^4.3.4",
     "exceljs": "^4.1.1",
     "npm": "^6.14.8"
   },

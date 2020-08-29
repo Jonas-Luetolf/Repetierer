@@ -1,4 +1,5 @@
 const {BrowserWindow, app} = require('electron');
+const {autoUpdater} = require("electron-updater");
 require('./src/mainProcess.js');
 
 let win;
@@ -35,4 +36,5 @@ app.on('ready', function() {
 	win.on('close', () => {
 		closeWindow();
 	})
+	autoUpdater.checkForUpdatesAndNotify();
 });
