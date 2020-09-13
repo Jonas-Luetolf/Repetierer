@@ -13,6 +13,7 @@ const _label = document.getElementById('grade').children.item(0);
 const _grade = document.getElementById('grade').children.item(1);
 const _cancel = document.getElementById('res').children.item(1);
 const _ok = document.getElementById('res').children.item(2);
+let _currentClass;
 
 /*
  * events to main
@@ -36,6 +37,7 @@ _file.addEventListener('click', () => {
 // class
 function classEvent(e) {
 	e.addEventListener('click', () => {
+		_currentClass = e;
 		ipcRenderer.send('class', e.innerText);
 	});
 }
@@ -56,6 +58,9 @@ _ok.addEventListener('click', () => {
 	let v = parseFloat(_grade.value.replace(',', '.'));
 	if (v && v >= 1 && v <= 6)
 		ipcRenderer.send('ok', v);
+	else
+		error(_ok);
+
 });
 
 /*
@@ -63,33 +68,61 @@ _ok.addEventListener('click', () => {
  */
 
 // state
-ipcRenderer.on('state', (e, a) => {
+/*ipcRenderer.on('state', (e, a) => {
 	state = a;
 	updateState();
-})
+})*/
 
 // classes
-ipcRenderer.on('classes', (e, a) => {
-	state = 1;
-	updateState();
+ipcRenderer.on('classes', (event, args) => {
+	if (args) {
+		state = 1;
+		updateState();
 
-	_classes.innerHTML = '';
-	for (let i = 0; i < a.length; i++) {
-		let x = document.createElement('button')
-		x.className = 'btn-2';
-		x.innerText = a[i];
-		classEvent(x);
-		_classes.appendChild(x);
+		_classes.innerHTML = '';
+		for (let i = 0; i < args.length; i++) {
+			let x = document.createElement('button')
+			x.className = 'btn-2';
+			x.innerText = args[i];
+			classEvent(x);
+			_classes.appendChild(x);
+		}
+	} else {
+		state = 0;
+		updateState();
+		error(_file);
 	}
 })
 
+// ready
+ipcRenderer.on('ready', (event, args) => {
+	if (!args) {
+		state = 2;
+		updateState();
+	} else {
+		state = 1;
+		updateState();
+		error(_currentClass);
+	}
+})
+
+// finished
+ipcRenderer.on('finished', (event, args) => {
+	if (!args) {
+		state = 2;
+		updateState();
+	} else
+		error(_ok);
+
+})
+
 // name
-ipcRenderer.on('name', (e, a) => {
+ipcRenderer.on('name', (event, args) => {
 	state = 3;
 	updateState();
 
 	_grade.value = '';
-	_name.innerText = a;
+	_name.innerText = args;
 	scaleName();
 })
 
@@ -101,6 +134,7 @@ ipcRenderer.on('name', (e, a) => {
 function updateState() {
 	switch (state) {
 		case 0:
+			_classes.innerHTML = '';
 		case 1:
 			disable(_start);
 			disable(_name);
@@ -142,6 +176,15 @@ function updateState() {
 		_name.innerText = 'name';
 		scaleName();
 	}
+}
+
+// error "handling"
+function error(x) {
+	x.classList.add('error');
+
+	new Promise(r => setTimeout(r, 600)).then(() => {
+		x.classList.remove('error');
+	});
 }
 
 // display the version

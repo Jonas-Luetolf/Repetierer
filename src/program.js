@@ -7,14 +7,14 @@ let person;
 function setFile(file, callback) {
 	init(file, (r) => {
 		callback(r);
-	})
+	});
 }
 
 // set the class
 function setClass(clss, callback) {
 	cls = clss;
 	persons = read(cls);
-	callback();
+	callback(!persons);
 }
 
 // select a random person (based on the amount of grades)

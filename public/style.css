@@ -107,7 +107,7 @@
 	}
 
 	#info p {
-		color: #414246;
+		color: #323439;
 		text-align: right;
 		padding: 0.1rem;
 	}
@@ -152,10 +152,19 @@
 		background-color: #27282c;
 		border: 0.1rem solid #18a890;
 	}
+	.btn-1.error {
+		border-color: #cc3333;
+	}
+	.btn-1:hover.error {
+		background-color: #cc3333;
+	}
 
 	.btn-2 {
 		border: none;
 		background-color: #414246;
+	}
+	.btn-2.error {
+		background-color: #cc3333;
 	}
 
 	.btn-1:hover, .btn-2:hover {
@@ -163,7 +172,6 @@
 	}
 
 	.disabled {
-		cursor: not-allowed;
 		pointer-events: none;
 		color: #777880;
 		border-color: #414246 !important;
@@ -186,6 +194,7 @@
 
 	#class-list button {
 		margin-bottom: 1rem;
+		margin-right: 1rem;
 	}
 
 	#class-list button:last-child {
@@ -244,6 +253,10 @@
 
 	label {
 		transition: .5s;
+	}
+
+	.error {
+		pointer-events: none;
 	}
 
 	/*==================================

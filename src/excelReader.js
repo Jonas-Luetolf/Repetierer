@@ -7,13 +7,17 @@ let ws;
 function init(file, callback) {
 	f = file;
 	wb = new ExcelJS.Workbook();
-	wb.xlsx.readFile(f).then(() => {
-		let r = [];
-		wb.worksheets.forEach(v => {
-			r.push(v.name);
+	wb.xlsx.readFile(f)
+		.then(() => {
+			let worksheets = [];
+			wb.worksheets.forEach(v => {
+				worksheets.push(v.name);
+			})
+			callback(worksheets);
 		})
-		callback(r);
-	});
+		.catch(() => {
+			callback();
+		})
 }
 
 // read and extract persons
@@ -29,13 +33,15 @@ function read(clss) {
 		let name = ws.getCell('A' + (i + 6));
 		if (!name.value) break;
 		let grades = countGrades(i)
-
-		persons.push({
-			id: i,
-			name: name.value,
-			grades: grades
-		});
+		if (grades < 6)
+			persons.push({
+				id: i,
+				name: name.value,
+				grades: grades
+			})
 	}
+
+	if (persons.length === 0) return;
 
 	return persons;
 
@@ -52,12 +58,19 @@ function read(clss) {
 function write(clss, person, grade, callback) {
 
 	// check file
-	if (ws.getCell('A1').value !== 'repetierer') return;
+	if (ws.getCell('A1').value !== 'repetierer') { callback(); return; }
 
 	ws.getCell(person.id + 6, person.grades + 2).value = grade;
 
 	// TODO: improve this
-	wb.xlsx.writeFile(f).then(() => init(f, () => callback(read(clss))));
+	wb.xlsx.writeFile(f)
+		.then(() => init(f, (a) => {
+			if (a)
+				callback(read(clss)) // read file again
+			else // init error
+				callback();
+		}))
+		.catch(() => callback()); // can't write
 }
 
 module.exports = {
