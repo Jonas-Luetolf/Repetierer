@@ -22,7 +22,7 @@ function selectPerson() {
 	let list = []
 
 	persons.forEach(e => {
-		for (let i = 0; i < Math.pow(6 - e.grades, 4) / 20; i++) {
+		for (let i = 0; i < Math.pow(Math.E, 6 - e.grades) - 1; i++) {
 			list.push(e);
 		}
 	})

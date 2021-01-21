@@ -1,5 +1,5 @@
 //const ipcRenderer = require('electron').ipcRenderer;
-const { ipcRenderer, remote } = require('electron');
+const {ipcRenderer, remote} = require('electron');
 let state = 0; // 0: select file, 1: select class, 2: click start, 3: set grade
 
 // elements
@@ -8,12 +8,14 @@ const _quit = document.getElementById('quit');
 const _file = document.getElementById('file').children.item(1);
 const _classes = document.getElementById('class-list').children.item(0);
 const _start = document.getElementById('repetition').children.item(1);
+const _repetition = document.getElementById('repetition');
 const _name = document.getElementById('name');
 const _label = document.getElementById('grade').children.item(0);
 const _grade = document.getElementById('grade').children.item(1);
 const _cancel = document.getElementById('res').children.item(1);
 const _ok = document.getElementById('res').children.item(2);
 let _currentClass;
+let _nameSize;
 
 /*
  * events to main
@@ -123,6 +125,7 @@ ipcRenderer.on('name', (event, args) => {
 
 	_grade.value = '';
 	_name.innerText = args;
+	_nameSize = 10;
 	scaleName();
 })
 
@@ -174,6 +177,7 @@ function updateState() {
 	function text() {
 		_grade.value = '';
 		_name.innerText = 'name';
+		_nameSize = 10;
 		scaleName();
 	}
 }
@@ -194,10 +198,18 @@ function version() {
 
 // scale the name to fit the screen
 function scaleName() {
-	Math.clamp = function(a, b, c) { return Math.max(b, Math.min(c, a)); }
-	let l = Math.sqrt(_name.innerText.length - 3) / 1.5;
-	_name.style.fontSize = 10 / Math.max(l, 1) + 'rem';
+	_name.style.fontSize = _nameSize + 'rem';
+	let a = parseInt(window.getComputedStyle(_repetition, null).getPropertyValue("width"), 10);
+	let b = _name.clientWidth;
+	let d = b - a;
+	if (d > 0) {
+		_nameSize -= 0.1;
+		scaleName();
+	}
+}
 
+Math.clamp = function(a, b, c) {
+	return Math.max(b, Math.min(c, a));
 }
 
 // automatically scale the name on load

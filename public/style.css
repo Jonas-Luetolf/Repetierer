@@ -1,6 +1,38 @@
 @font-face {
 	font-family: "Roboto";
-	src: url("./fonts/Roboto.ttf") format("ttf");
+	src: url("./fonts/Roboto-Thin.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 100;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("./fonts/Roboto-Light.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 300;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("./fonts/Roboto-Regular.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 400;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("./fonts/Roboto-Medium.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 500;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("./fonts/Roboto-Bold.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 700;
+}
+@font-face {
+	font-family: "Roboto";
+	src: url("./fonts/Roboto-Black.ttf") format("ttf");
+	font-style: normal;
+	font-weight: 900;
 }
 
 @media all {
@@ -15,6 +47,7 @@
 		color: #f5f5f5;
 		-webkit-font-smoothing: antialiased;
 		user-select: none;
+		font-weight: 300;
 	}
 
 	artice, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
@@ -67,7 +100,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		fill: lightgray;
-		transition: .5s;
+		transition: fill .5s;
 	}
 
 	.ico:hover > svg {
@@ -86,6 +119,7 @@
 		font-size: 4.5rem;
 		padding: 0 3rem;
 		line-height: 100%;
+		font-weight: 700;
 	}
 
 	#content {
@@ -107,9 +141,10 @@
 	}
 
 	#info p {
-		color: #323439;
+		color: #414246;
 		text-align: right;
 		padding: 0.1rem;
+		font-weight: 300;
 	}
 
 	#file {
@@ -123,6 +158,9 @@
 	#repetition {
 		grid-area: 1 / 2 / 4 / 4;
 		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
 	.neum {
@@ -135,6 +173,7 @@
 		font-size: 2.25rem;
 		margin-bottom: 1.75rem;
 		line-height: 100%;
+		font-weight: 700;
 	}
 
 	.btn-1, .btn-2 {
@@ -145,7 +184,7 @@
 		border-radius: 3.5rem;
 		outline: none;
 		cursor: pointer;
-		transition: .5s;
+		transition: background-color .5s, color .5s, border-color .5s;
 	}
 
 	.btn-1 {
@@ -211,6 +250,9 @@
 		vertical-align: top;
 		margin-top: 2rem;
 		color: #18a890;
+		font-weight: 700;
+		transition: background-color .5s, color .5s, border-color .5s;
+		white-space: nowrap;
 	}
 
 	#name.disabled {
@@ -248,11 +290,11 @@
 		padding: 0.5rem;
 		width: 2rem;
 		text-align: center;
-		transition: .5s;
+		transition: background-color .5s, color .5s, border-color .5s;
 	}
 
 	label {
-		transition: .5s;
+		transition: background-color .5s, color .5s, border-color .5s;
 	}
 
 	.error {
