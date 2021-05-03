@@ -2,6 +2,11 @@
   "name": "repetierer",
   "version": "3.0.5",
   "description": "(:",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srpnt3/Repetierer.git"
+  },
   "main": "app.js",
   "scripts": {
     "start": "electron . ",
@@ -35,13 +40,13 @@
   },
   "author": "srpnt3",
   "dependencies": {
-    "electron-updater": "^4.3.5",
-    "exceljs": "^4.2.0",
-    "npm": "^6.14.11"
+    "electron-updater": "^4.3.8",
+    "exceljs": "^4.2.1",
+    "npm": "^6.14.13"
   },
   "devDependencies": {
     "electron": "^9.4.0",
-    "electron-builder": "^22.9.1",
+    "electron-builder": "^22.10.5",
     "electron-packager": "^15.2.0"
   }
 }

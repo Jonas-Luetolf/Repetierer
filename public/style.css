@@ -237,7 +237,7 @@
 	}
 
 	#class-list button:last-child {
-		margin: 0;
+		margin-bottom: 0;
 	}
 
 	#class-list button:hover {
