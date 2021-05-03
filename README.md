@@ -14,7 +14,7 @@ Use said file as a template and edit it according to Your needs.
 It currently supports up to 25 students (rows), a maximum six grades per student (columns) and infinite classes/subjects (individual worksheets).
 The program itself is pretty self-explanatory.
 
-#![](https://raw.githubusercontent.com/srpnt3/Repetierer/master/public/images/preview.png)
+![](https://raw.githubusercontent.com/srpnt3/Repetierer/master/public/images/preview.png)
 
 ## Future Development
 I do not plan to continue this project any further, since I will soon finish the school for which I developed the application.
