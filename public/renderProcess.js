@@ -14,6 +14,7 @@ const _label = document.getElementById('grade').children.item(0);
 const _grade = document.getElementById('grade').children.item(1);
 const _cancel = document.getElementById('res').children.item(1);
 const _ok = document.getElementById('res').children.item(2);
+const _joker = document.getElementById('res').children.item(3);
 let _currentClass;
 let _nameSize;
 
@@ -62,6 +63,10 @@ _ok.addEventListener('click', () => {
 		ipcRenderer.send('ok', v);
 	else
 		error(_ok);
+
+});
+_joker.addEventListener('click', () => {
+	ipcRenderer.send('joker');
 
 });
 
@@ -120,15 +125,27 @@ ipcRenderer.on('finished', (event, args) => {
 
 // name
 ipcRenderer.on('name', (event, args) => {
-	state = 3;
-	updateState();
-
+	
+	const [name, joker] = args
+    
+    // check if joker is available
+    if (joker) {
+        state = 3
+    } else {
+        state = 4
+    }
+    
+    updateState();
 	_grade.value = '';
-	_name.innerText = args;
+	_name.innerText = name;
 	_nameSize = 10;
 	scaleName();
+
 })
 
+
+
+    
 /*
  * other
  */
@@ -145,6 +162,7 @@ function updateState() {
 			disable(_grade);
 			disable(_cancel);
 			disable(_ok);
+            disable(_joker);
 			text();
 			break;
 		case 2:
@@ -154,6 +172,7 @@ function updateState() {
 			disable(_grade);
 			disable(_cancel);
 			disable(_ok);
+            disable(_joker);
 			text();
 			break;
 		case 3:
@@ -163,7 +182,18 @@ function updateState() {
 			enable(_grade);
 			enable(_cancel);
 			enable(_ok);
+            disable(_joker);
 			break;
+        case 4:
+			enable(_start);
+			enable(_name);
+			enable(_label);
+			enable(_grade);
+			enable(_cancel);
+			enable(_ok);
+            enable(_joker);
+			break;
+
 	}
 
 	function disable(e) {

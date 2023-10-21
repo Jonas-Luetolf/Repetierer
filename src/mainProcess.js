@@ -1,5 +1,5 @@
 const { ipcMain, app, BrowserWindow, dialog } = require('electron');
-const { setFile, setClass, selectPerson, saveGrade } = require('./program.js');
+const { setFile, setClass, selectPerson, saveGrade, setJoker } = require('./program.js');
 
 /*
  * events
@@ -45,4 +45,9 @@ ipcMain.on('ok', (event, args) => {
 	saveGrade(args, (result) => {
 		event.sender.send('finished', result);
 	});
+});
+
+// joker
+ipcMain.on('joker', (event, args) => {
+    event.sender.send('finished', setJoker())
 });

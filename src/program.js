@@ -1,4 +1,4 @@
-const { init, read, write } = require('./excelReader.js');
+const { init, read, write_grade, write_joker } = require('./excelReader.js');
 let cls;
 let persons;
 let person;
@@ -29,20 +29,29 @@ function selectPerson() {
 
 	let x = Math.floor(Math.random() * (list.length));
 	person = list[x];
-	return person.name;
+	return [person.name, person.joker];
 }
 
 // save the new grade to the file
 function saveGrade(grade, callback) {
-	write(cls, person, grade, (p) => {
+	write_grade(cls, person, grade, (p) => {
 		persons = p;
 		callback()
 	});
+}
+
+// save the joker to the file
+function setJoker() {
+    write_joker(cls, person, (p) => {
+        persons  = p;
+    });
+
 }
 
 module.exports = {
 	setFile: setFile,
 	setClass: setClass,
 	selectPerson: selectPerson,
-	saveGrade: saveGrade
+	saveGrade: saveGrade,
+    setJoker: setJoker
 }

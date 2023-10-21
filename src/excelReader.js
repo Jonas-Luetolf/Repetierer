@@ -33,11 +33,13 @@ function read(clss) {
 		let name = ws.getCell('A' + (i + 6));
 		if (!name.value) break;
 		let grades = countGrades(i)
-		if (grades < 6)
+        let joker = ws.getCell('H' + (i + 6));
+        if (grades < 6)
 			persons.push({
 				id: i,
 				name: name.value,
-				grades: grades
+				grades: grades,
+                joker: joker.value
 			})
 	}
 
@@ -55,7 +57,7 @@ function read(clss) {
 }
 
 // write grade to file
-function write(clss, person, grade, callback) {
+function write_grade(clss, person, grade, callback) {
 
 	// check file
 	if (ws.getCell('A1').value !== 'repetierer') { callback(); return; }
@@ -72,9 +74,27 @@ function write(clss, person, grade, callback) {
 		}))
 		.catch(() => callback()); // can't write
 }
+function write_joker(clss, person, callback) {
 
+	// check file
+	if (ws.getCell('A1').value !== 'repetierer') { callback(); return; }
+    
+    if (ws.getCell('H' + (person.id + 6)).value === 1) {callback; return;}
+	ws.getCell('H' + (person.id + 6)).value = 1;
+
+	// TODO: improve this
+	wb.xlsx.writeFile(f)
+		.then(() => init(f, (a) => {
+			if (a)
+				callback(read(clss)) // read file again
+			else // init error
+				callback();
+		}))
+		.catch(() => callback()); // can't write
+}
 module.exports = {
 	init: init,
 	read: read,
-	write: write
+	write_grade: write_grade,
+    write_joker: write_joker
 }
