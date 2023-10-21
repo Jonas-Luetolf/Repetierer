@@ -1,11 +1,11 @@
 {
   "name": "repetierer",
-  "version": "3.0.5",
+  "version": "4.0.0",
   "description": "(:",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/srpnt3/Repetierer.git"
+    "url": "https://github.com/Jonas-Luetolf/Repetierer.git"
   },
   "main": "app.js",
   "scripts": {
@@ -38,7 +38,7 @@
       "artifactName": "Repetierer ${version}.${ext}"
     }
   },
-  "author": "srpnt3",
+  "author": "srpnt3, Jonas-Luetolf",
   "dependencies": {
     "electron-updater": "^4.3.8",
     "exceljs": "^4.2.1",
