@@ -1,6 +1,6 @@
 {
   "name": "repetierer",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "(:",
   "license": "GPL-3.0",
   "repository": {
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "electron": "^9.4.0",
-    "electron-builder": "^22.10.5",
+    "electron-builder": "^22.14.13",
     "electron-packager": "^15.2.0"
   }
 }

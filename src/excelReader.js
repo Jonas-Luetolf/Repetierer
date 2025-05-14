@@ -63,6 +63,9 @@ function write_grade(clss, person, grade, callback) {
 	if (ws.getCell('A1').value !== 'repetierer') { callback(); return; }
 
 	ws.getCell(person.id + 6, person.grades + 2).value = grade;
+	const currentDate = new Date();
+	const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}.${String(currentDate.getMonth() + 1).padStart(2, '0')}.${currentDate.getFullYear()}`;
+	ws.getCell(person.id + 6, person.grades + 11).value = formattedDate;
 
 	// TODO: improve this
 	wb.xlsx.writeFile(f)
@@ -81,6 +84,10 @@ function write_joker(clss, person, callback) {
     
     if (ws.getCell('H' + (person.id + 6)).value === 1) {callback; return;}
 	ws.getCell('H' + (person.id + 6)).value = 1;
+
+	const currentDate = new Date();
+	const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}.${String(currentDate.getMonth() + 1).padStart(2, '0')}.${currentDate.getFullYear()}`;
+	ws.getCell('Q' + (person.id + 6)).value = formattedDate;
 
 	// TODO: improve this
 	wb.xlsx.writeFile(f)
