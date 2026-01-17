@@ -176,6 +176,16 @@
 		font-weight: 700;
 	}
 
+	#class-name {
+	font-size: 1.5rem;
+	color: #18a890;
+	font-weight: 300;
+	}
+
+	#class-name:empty {
+		display: none;
+	}
+
 	.btn-1, .btn-2 {
 		-webkit-appearance: none;
 		font-size: 1rem;
@@ -300,6 +310,125 @@
 	.error {
 		pointer-events: none;
 	}
+
+.button-row {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.button-row button {
+	flex: 1;
+	max-width: 200px;
+	margin-left: 1rem;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+	background-color: #1e1e1e;
+	margin: 10% auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 80%;
+	max-width: 500px;
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.modal-content h2 {
+	margin-top: 0;
+	color: #fff;
+}
+
+#person-list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 20px 0;
+	max-height: 50vh;
+	overflow-y: auto;
+	overflow: scroll;
+	height: calc(100% - 4rem);
+}
+
+
+#person-list::-webkit-scrollbar {
+	width: 0.4rem;
+	height: 0;
+}
+
+#person-list::-webkit-scrollbar-thumb {
+	background-color: #414246;
+	border-radius: 0.2rem;
+}
+
+
+.person-item {
+	padding: 10px;
+	margin: 5px;
+	background: #2a2a2a;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	color: #fff;
+}
+
+.person-item input[type="checkbox"] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #666;
+	border-radius: 50%;
+	cursor: pointer;
+	position: relative;
+	transition: all 0.2s ease;
+	outline: none;
+}
+
+.person-item input[type="checkbox"]:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.person-item input[type="checkbox"]:checked {
+	background-color: #18a890;
+	border-color: #18a890;
+}
+
+.person-item input[type="checkbox"]:checked::after {
+	content: '✓';
+	position: absolute;
+	color: white;
+	font-size: 14px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.modal-buttons {
+	display: flex;
+	gap: 10px;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.modal-buttons button {
+	flex: 1;
+	margin-left: 1rem;
+}
 
 	/*==================================
 	End

@@ -17,9 +17,22 @@ function setClass(clss, callback) {
 	callback(!persons);
 }
 
+// get all persons for manual selection
+function getPersons() {
+	return persons;
+}
+
+// select a specific person manually
+function selectSpecificPerson(personId) {
+	person = persons.find(p => p.id === personId);
+	return person ? [person.name, person.joker] : null;
+}
+
 // select a random person (based on the amount of grades)
 function selectPerson() {
 	let list = []
+
+	if (!persons || persons.length === 0) return null;
 
 	persons.forEach(e => {
 		for (let i = 0; i < Math.pow(Math.E, 6 - e.grades) - 1; i++) {
@@ -53,5 +66,7 @@ module.exports = {
 	setClass: setClass,
 	selectPerson: selectPerson,
 	saveGrade: saveGrade,
-    setJoker: setJoker
+    setJoker: setJoker,
+	getPersons: getPersons,
+	selectSpecificPerson: selectSpecificPerson,
 }
