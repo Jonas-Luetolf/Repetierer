@@ -45,8 +45,11 @@
 			</div>
 		</div>
 		<div class="neum" id="repetition">
-			<h2>Repetition</h2>
-			<button class="btn-1 disabled">Start</button>
+			<h2>Repetition <span id="class-name"></span></h2>
+			<div class="button-row">
+				<button class="btn-1 disabled" id="start-btn">Start</button>
+				<button class="btn-1 disabled" id="manual-select-btn">Freiwillig</button>
+			</div>
 			<h1 class="disabled" id="name">Name</h1>
 			<div id="res">
 				<div id="grade">
@@ -55,11 +58,21 @@
 				</div>
 				<button class="btn-2 disabled">Abbrechen</button>
 				<button class="btn-1 disabled">OK</button>
-                <button class="btn-1 disabled">Joker</button>
+				<button class="btn-1 disabled">Joker</button>
 			</div>
 		</div>
 	</div>
 
+	<div id="person-modal" class="modal">
+		<div class="modal-content">
+			<h2>Schüler auswählen</h2>
+			<div id="person-list"></div>
+			<div class="modal-buttons">
+				<button class="btn-1" id="random-select-btn">Auswählen</button>
+				<button class="btn-2" id="close-modal">Abbrechen</button>
+			</div>
+		</div>
+	</div>
 
 </div>
 </body>

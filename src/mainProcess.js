@@ -1,5 +1,5 @@
 const { ipcMain, app, BrowserWindow, dialog } = require('electron');
-const { setFile, setClass, selectPerson, saveGrade, setJoker } = require('./program.js');
+const { setFile, setClass, selectPerson, saveGrade, setJoker, selectSpecificPerson, getPersons} = require('./program.js');
 
 /*
  * events
@@ -37,7 +37,27 @@ ipcMain.on('class', (event, args) => {
 
 // start
 ipcMain.on('start', (event, args) => {
-	event.sender.send('name', selectPerson());
+	const selectedPerson = selectPerson();
+	if (selectedPerson) {
+		event.sender.send('name', selectedPerson);
+	} else {
+		event.sender.send('no-person-available');
+	}
+});
+
+
+// get persons list for manual selection
+ipcMain.on('get-persons', (event, args) => {
+	const persons = getPersons();
+	event.sender.send('persons-list', persons);
+});
+
+// select specific person
+ipcMain.on('select-person', (event, personId) => {
+	const result = selectSpecificPerson(personId);
+	if (result) {
+		event.sender.send('name', result);
+	}
 });
 
 // ok
