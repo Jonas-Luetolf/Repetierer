@@ -24,6 +24,9 @@ function init(file, callback) {
 function read(clss) {
 	ws = wb.getWorksheet(clss);
 
+	const currentDate = new Date();
+	const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}.${String(currentDate.getMonth() + 1).padStart(2, '0')}.${currentDate.getFullYear()}`;
+
 	// check file
 	if (ws.getCell('A1').value !== 'repetierer') return;
 
@@ -31,7 +34,13 @@ function read(clss) {
 	let persons = [];
 	for (let i = 0; i < 25; i++) {
 		let name = ws.getCell('A' + (i + 6));
+		let joker_date = ws.getCell('Q' + (i + 6))
+
 		if (!name.value) break;
+
+		// check if a person used the joker on the current date
+		if (joker_date == formattedDate) continue;
+
 		let grades = countGrades(i)
         let joker = ws.getCell('H' + (i + 6));
         if (grades < 6)

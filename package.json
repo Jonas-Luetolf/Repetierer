@@ -46,7 +46,7 @@
     "user": "^0.0.0"
   },
   "devDependencies": {
-    "electron": "^9.4.0",
+    "electron": "^9.4.4",
     "electron-builder": "^22.14.13",
     "electron-packager": "^15.2.0"
   }
